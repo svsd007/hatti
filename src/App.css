@@ -1,0 +1,504 @@
+:root {
+  --hatti-green: #355f46;
+  --hatti-dark-green: #244634;
+  --hatti-sage: #8fae91;
+  --hatti-cream: #f5f0e6;
+  --hatti-beige: #e8dcc7;
+  --hatti-white: #fffdf8;
+  --hatti-text: #2f332f;
+  --hatti-muted: #6f776d;
+  --hatti-border: rgba(53, 95, 70, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--hatti-cream);
+  color: var(--hatti-text);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+button,
+a,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background: var(--hatti-cream);
+}
+
+.hatti-navbar {
+  min-height: 78px;
+  border-bottom: 1px solid var(--hatti-border);
+  background: var(--hatti-white);
+}
+
+.hatti-wordmark {
+  color: var(--hatti-dark-green);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1;
+  padding: 0.35rem 0.2rem;
+  
+  
+}
+
+
+.hatti-logo {
+    width: 204.8px;
+    height: 76.8px;
+    transition: transform 0.2s ease, filter 0.2s ease;
+
+}
+
+
+.hatti-logo:hover {
+  transform: scale(1.01);
+  filter: brightness(1.08);
+}
+
+
+
+.hatti-wordmark:hover {
+  color: var(--hatti-green);
+}
+
+.hatti-search {
+  max-width: 720px;
+}
+
+.hatti-search .form-control {
+  min-height: 48px;
+  border: 1px solid var(--hatti-border);
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: var(--hatti-text);
+  padding: 0.75rem 1.25rem;
+}
+
+.hatti-search .form-control:focus {
+  border-color: var(--hatti-sage);
+  box-shadow: none;
+  outline: 2px solid rgba(143, 174, 145, 0.5);
+  outline-offset: 2px;
+}
+
+.navbar-location {
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--hatti-dark-green);
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.location-dot {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 3px;
+  background: var(--hatti-sage);
+}
+
+.hatti-cart-btn,
+.hatti-primary-btn,
+.hatti-add-btn {
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.hatti-cart-btn {
+  min-width: 48px;
+  min-height: 48px;
+  border: 1px solid var(--hatti-border);
+  background: var(--hatti-cream);
+  color: var(--hatti-dark-green);
+}
+
+.hatti-cart-btn:hover {
+  border-color: var(--hatti-sage);
+  background: var(--hatti-beige);
+}
+
+.app-layout {
+  display: flex;
+  align-items: flex-start;
+}
+
+.hatti-sidebar {
+  position: sticky;
+  top: 78px;
+  width: 250px;
+  min-height: calc(100vh - 78px);
+  padding: 1.5rem 1rem;
+  border-right: 1px solid var(--hatti-border);
+  background: var(--hatti-white);
+}
+
+.sidebar-nav {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 46px;
+  border-radius: 6px;
+  color: var(--hatti-muted);
+  font-weight: 650;
+  padding: 0.75rem 0.9rem;
+  text-decoration: none;
+}
+
+.sidebar-link:hover {
+  background: rgba(143, 174, 145, 0.15);
+  color: var(--hatti-dark-green);
+}
+
+.sidebar-link.active {
+  background: var(--hatti-green);
+  color: var(--hatti-white);
+}
+
+.sidebar-marker {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 2px;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+.hatti-main {
+  width: 100%;
+  max-width: 1440px;
+  padding: 2rem;
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 280px;
+  margin-bottom: 2.25rem;
+  border: 1px solid var(--hatti-border);
+  border-radius: 6px;
+  background: var(--hatti-white);
+  padding: clamp(1.5rem, 4vw, 3.25rem);
+}
+
+.section-kicker {
+  margin-bottom: 0.65rem;
+  color: var(--hatti-green);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-section h1 {
+  max-width: 620px;
+  margin: 0;
+  color: var(--hatti-dark-green);
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  font-weight: 850;
+  letter-spacing: 0;
+  line-height: 0.98;
+}
+
+.hero-copy {
+  max-width: 520px;
+  margin: 1.1rem 0 1.5rem;
+  color: var(--hatti-muted);
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.hatti-primary-btn {
+  border: 0;
+  background: var(--hatti-green);
+  color: var(--hatti-white);
+  padding: 0.85rem 1.35rem;
+}
+
+.hatti-primary-btn:hover {
+  background: var(--hatti-dark-green);
+  color: var(--hatti-white);
+}
+
+.hero-basket {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(82px, 1fr));
+  gap: 0.85rem;
+  min-width: 220px;
+}
+
+.basket-icon {
+  display: grid;
+  min-height: 92px;
+  place-items: center;
+  border: 1px solid rgba(53, 95, 70, 0.12);
+  border-radius: 6px;
+  background: var(--hatti-cream);
+  font-size: 2.4rem;
+}
+
+.basket-icon:first-child {
+  grid-row: span 2;
+  min-height: 192px;
+}
+
+.content-section {
+  margin-bottom: 2.5rem;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: var(--hatti-dark-green);
+  font-size: 1.55rem;
+  font-weight: 800;
+}
+
+.section-heading span {
+  color: var(--hatti-muted);
+  font-weight: 600;
+}
+
+.hatti-card {
+  border: 1px solid var(--hatti-border);
+  border-radius: 6px;
+  background: var(--hatti-white);
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.product-image {
+  display: grid;
+  min-height: 150px;
+  place-items: center;
+  border-bottom: 1px solid var(--hatti-border);
+}
+
+.product-image span {
+  display: grid;
+  width: 68px;
+  height: 68px;
+  place-items: center;
+  border-radius: 4px;
+  background: rgba(255, 253, 248, 0.72);
+  color: var(--hatti-dark-green);
+  font-size: 2rem;
+  font-weight: 850;
+}
+
+.strawberry {
+  background: #f9d5d5;
+}
+
+.tomato {
+  background: #f2c6af;
+}
+
+.corn {
+  background: #f5dea1;
+}
+
+.blueberry {
+  background: #ccd7ef;
+}
+
+.card-body-content {
+  display: grid;
+  gap: 1.2rem;
+  padding: 1.1rem;
+}
+
+.product-card h3,
+.farmer-card h3,
+.market-card h3 {
+  margin: 0 0 0.25rem;
+  color: var(--hatti-dark-green);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.product-card p,
+.market-card p,
+.farmer-location {
+  margin: 0;
+  color: var(--hatti-muted);
+  font-weight: 600;
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.product-footer strong {
+  color: var(--hatti-text);
+}
+
+.hatti-add-btn {
+  border: 0;
+  background: rgba(53, 95, 70, 0.1);
+  color: var(--hatti-green);
+  padding: 0.4rem 0.9rem;
+}
+
+.hatti-add-btn:hover {
+  background: var(--hatti-green);
+  color: var(--hatti-white);
+}
+
+.farmer-card,
+.market-card {
+  display: flex;
+  gap: 1rem;
+  padding: 1.15rem;
+}
+
+.farmer-logo,
+.market-icon {
+  display: grid;
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  place-items: center;
+  border-radius: 6px;
+  background: rgba(143, 174, 145, 0.2);
+  color: var(--hatti-green);
+  font-weight: 850;
+}
+
+.farmer-description {
+  margin: 0.6rem 0 0;
+  color: var(--hatti-text);
+  line-height: 1.5;
+}
+
+.season-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.season-card {
+  min-height: 96px;
+  border: 1px solid var(--hatti-border);
+  border-radius: 6px;
+  background: rgba(255, 253, 248, 0.92);
+  color: var(--hatti-dark-green);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.season-card:hover {
+  border-color: rgba(53, 95, 70, 0.26);
+  background: rgba(143, 174, 145, 0.16);
+}
+
+.market-icon {
+  width: 76px;
+  height: 76px;
+  border-radius: 6px;
+  background: var(--hatti-beige);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+.market-card span {
+  display: inline-flex;
+  margin-top: 0.65rem;
+  border-radius: 6px;
+  background: rgba(143, 174, 145, 0.16);
+  color: var(--hatti-green);
+  font-size: 0.9rem;
+  font-weight: 750;
+  padding: 0.45rem 0.75rem;
+}
+
+@media (max-width: 991.98px) {
+  .hatti-sidebar {
+    display: none;
+  }
+
+  .hatti-main {
+    padding: 1.25rem;
+  }
+
+  .hero-section {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hero-basket {
+    width: 100%;
+  }
+
+  .season-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hatti-navbar .container-fluid {
+    align-items: stretch;
+  }
+
+  .hatti-wordmark {
+    font-size: 1.7rem;
+  }
+
+  .hatti-search {
+    order: 3;
+    flex-basis: 100%;
+    max-width: none;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .hero-section {
+    border-radius: 6px;
+  }
+
+  .hero-basket {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .basket-icon,
+  .basket-icon:first-child {
+    grid-row: auto;
+    min-height: 84px;
+  }
+
+  .season-grid {
+    grid-template-columns: 1fr;
+  }
+}
