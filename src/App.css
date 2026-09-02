@@ -31,13 +31,16 @@ input {
 
 .app-shell {
   min-height: 100vh;
-  background: var(--hatti-cream);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.7), rgba(245, 240, 230, 0.9)),
+    var(--hatti-cream);
 }
 
 .hatti-navbar {
   min-height: 78px;
   border-bottom: 1px solid var(--hatti-border);
-  background: var(--hatti-white);
+  background: rgba(255, 253, 248, 0.96);
+  box-shadow: 0 8px 22px rgba(36, 70, 52, 0.05);
 }
 
 .hatti-wordmark {
@@ -78,7 +81,7 @@ input {
 .hatti-search .form-control {
   min-height: 48px;
   border: 1px solid var(--hatti-border);
-  border-radius: 6px;
+  border-radius: 10px;
   background-color: #ffffff;
   color: var(--hatti-text);
   padding: 0.75rem 1.25rem;
@@ -109,7 +112,7 @@ input {
 .hatti-cart-btn,
 .hatti-primary-btn,
 .hatti-add-btn {
-  border-radius: 6px;
+  border-radius: 10px;
   font-weight: 700;
 }
 
@@ -117,7 +120,7 @@ input {
   min-width: 48px;
   min-height: 48px;
   border: 1px solid var(--hatti-border);
-  background: var(--hatti-cream);
+  background: var(--hatti-white);
   color: var(--hatti-dark-green);
 }
 
@@ -138,7 +141,7 @@ input {
   min-height: calc(100vh - 78px);
   padding: 1.5rem 1rem;
   border-right: 1px solid var(--hatti-border);
-  background: var(--hatti-white);
+  background: rgba(255, 253, 248, 0.82);
 }
 
 .sidebar-nav {
@@ -150,11 +153,15 @@ input {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  width: 100%;
   min-height: 46px;
-  border-radius: 6px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
   color: var(--hatti-muted);
   font-weight: 650;
   padding: 0.75rem 0.9rem;
+  text-align: left;
   text-decoration: none;
 }
 
@@ -179,7 +186,7 @@ input {
 .hatti-main {
   width: 100%;
   max-width: 1440px;
-  padding: 2rem;
+  padding: 2.25rem;
 }
 
 .hero-section {
@@ -190,8 +197,9 @@ input {
   min-height: 280px;
   margin-bottom: 2.25rem;
   border: 1px solid var(--hatti-border);
-  border-radius: 6px;
+  border-radius: 14px;
   background: var(--hatti-white);
+  box-shadow: 0 14px 35px rgba(36, 70, 52, 0.06);
   padding: clamp(1.5rem, 4vw, 3.25rem);
 }
 
@@ -222,11 +230,39 @@ input {
   line-height: 1.6;
 }
 
+.page-intro {
+  margin-bottom: 2rem;
+  border: 1px solid var(--hatti-border);
+  border-radius: 14px;
+  background: var(--hatti-white);
+  box-shadow: 0 12px 28px rgba(36, 70, 52, 0.045);
+  padding: clamp(1.3rem, 3vw, 2.15rem);
+}
+
+.page-intro h1 {
+  max-width: 760px;
+  margin: 0;
+  color: var(--hatti-dark-green);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 850;
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+
+.page-intro p:last-child {
+  max-width: 680px;
+  margin: 0.85rem 0 0;
+  color: var(--hatti-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
 .hatti-primary-btn {
   border: 0;
   background: var(--hatti-green);
   color: var(--hatti-white);
   padding: 0.85rem 1.35rem;
+  box-shadow: 0 8px 18px rgba(36, 70, 52, 0.14);
 }
 
 .hatti-primary-btn:hover {
@@ -246,7 +282,7 @@ input {
   min-height: 92px;
   place-items: center;
   border: 1px solid rgba(53, 95, 70, 0.12);
-  border-radius: 6px;
+  border-radius: 12px;
   background: var(--hatti-cream);
   font-size: 2.4rem;
 }
@@ -282,8 +318,9 @@ input {
 
 .hatti-card {
   border: 1px solid var(--hatti-border);
-  border-radius: 6px;
+  border-radius: 12px;
   background: var(--hatti-white);
+  box-shadow: 0 10px 24px rgba(36, 70, 52, 0.045);
 }
 
 .product-card {
@@ -304,7 +341,7 @@ input {
   width: 68px;
   height: 68px;
   place-items: center;
-  border-radius: 4px;
+  border-radius: 10px;
   background: rgba(255, 253, 248, 0.72);
   color: var(--hatti-dark-green);
   font-size: 2rem;
@@ -325,6 +362,19 @@ input {
 
 .blueberry {
   background: #ccd7ef;
+}
+
+.zucchini,
+.kale {
+  background: #d9e6ce;
+}
+
+.peach {
+  background: #f4d3b4;
+}
+
+.carrot {
+  background: #f2caa5;
 }
 
 .card-body-content {
@@ -362,8 +412,8 @@ input {
 }
 
 .hatti-add-btn {
-  border: 0;
-  background: rgba(53, 95, 70, 0.1);
+  border: 1px solid rgba(53, 95, 70, 0.14);
+  background: rgba(143, 174, 145, 0.14);
   color: var(--hatti-green);
   padding: 0.4rem 0.9rem;
 }
@@ -371,6 +421,29 @@ input {
 .hatti-add-btn:hover {
   background: var(--hatti-green);
   color: var(--hatti-white);
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.filter-chip {
+  border: 1px solid var(--hatti-border);
+  border-radius: 10px;
+  background: var(--hatti-white);
+  color: var(--hatti-muted);
+  font-weight: 650;
+  padding: 0.55rem 0.85rem;
+}
+
+.filter-chip:hover,
+.filter-chip.active {
+  border-color: rgba(53, 95, 70, 0.3);
+  background: rgba(143, 174, 145, 0.16);
+  color: var(--hatti-dark-green);
 }
 
 .farmer-card,
@@ -387,7 +460,7 @@ input {
   width: 64px;
   height: 64px;
   place-items: center;
-  border-radius: 6px;
+  border-radius: 10px;
   background: rgba(143, 174, 145, 0.2);
   color: var(--hatti-green);
   font-weight: 850;
@@ -408,7 +481,7 @@ input {
 .season-card {
   min-height: 96px;
   border: 1px solid var(--hatti-border);
-  border-radius: 6px;
+  border-radius: 12px;
   background: rgba(255, 253, 248, 0.92);
   color: var(--hatti-dark-green);
   font-size: 1.05rem;
@@ -423,7 +496,7 @@ input {
 .market-icon {
   width: 76px;
   height: 76px;
-  border-radius: 6px;
+  border-radius: 10px;
   background: var(--hatti-beige);
   font-size: 0.78rem;
   text-transform: uppercase;
@@ -432,12 +505,109 @@ input {
 .market-card span {
   display: inline-flex;
   margin-top: 0.65rem;
-  border-radius: 6px;
+  border-radius: 10px;
   background: rgba(143, 174, 145, 0.16);
   color: var(--hatti-green);
   font-size: 0.9rem;
   font-weight: 750;
   padding: 0.45rem 0.75rem;
+}
+
+.deal-card,
+.profile-card {
+  padding: 1.15rem;
+}
+
+.deal-card {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.deal-card h3,
+.order-card h3,
+.profile-card h3 {
+  margin: 0 0 0.35rem;
+  color: var(--hatti-dark-green);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.deal-badge {
+  display: inline-flex;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(53, 95, 70, 0.16);
+  border-radius: 10px;
+  background: rgba(143, 174, 145, 0.16);
+  color: var(--hatti-green);
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 0.35rem 0.55rem;
+}
+
+.deal-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.old-price {
+  color: var(--hatti-muted);
+  text-decoration: line-through;
+}
+
+.deal-footer strong {
+  margin-right: auto;
+  color: var(--hatti-dark-green);
+  font-size: 1.15rem;
+}
+
+.order-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.order-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem;
+}
+
+.order-card p,
+.profile-card p {
+  margin: 0;
+  color: var(--hatti-muted);
+  font-weight: 600;
+}
+
+.order-card > div:first-child span {
+  display: inline-flex;
+  margin-top: 0.55rem;
+  color: var(--hatti-text);
+}
+
+.order-summary {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 120px;
+  text-align: right;
+}
+
+.order-summary strong {
+  color: var(--hatti-dark-green);
+  font-size: 1.1rem;
+}
+
+.order-summary span {
+  color: var(--hatti-green);
+  font-weight: 750;
+}
+
+.profile-card {
+  display: grid;
+  align-content: start;
+  gap: 0.55rem;
 }
 
 @media (max-width: 991.98px) {
@@ -485,7 +655,7 @@ input {
   }
 
   .hero-section {
-    border-radius: 6px;
+    border-radius: 12px;
   }
 
   .hero-basket {
