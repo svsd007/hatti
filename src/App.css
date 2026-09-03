@@ -294,7 +294,10 @@ input {
 
 .content-section {
   margin-bottom: 2.5rem;
+   scroll-margin-top: 80px;
 }
+
+
 
 .section-heading {
   display: flex;

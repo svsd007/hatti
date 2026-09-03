@@ -1,9 +1,16 @@
-function Navbar() {
+interface navProp {
+  func: (s: string) => void;
+}
+
+function Navbar(d: navProp) {
+  const thefunc = d.func;
+
+  
   return (
     <nav className="navbar hatti-navbar sticky-top">
       <div className="container-fluid gap-3">
         <a className="navbar-brand hatti-wordmark" href="#">
-          <img className = "hatti-logo" src = "src\assets\hattilogo.png" />
+          <img className="hatti-logo" src="src\assets\hattilogo.png" />
         </a>
 
         <form className="hatti-search flex-grow-1" role="search">
@@ -20,7 +27,12 @@ function Navbar() {
           Vancouver, BC
         </div>
 
-        <button className="btn hatti-cart-btn" type="button" aria-label="Open cart">
+        <button
+          className="btn hatti-cart-btn"
+          type="button"
+          aria-label="Open cart"
+          onClick={() => thefunc("Cart")}
+        >
           🧺
         </button>
       </div>

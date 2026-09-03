@@ -8,12 +8,14 @@ import DisplayPage from "./DisplayPage";
 
 
 function App() {
+
+
   const [page, setPage] = useState("Home")
   
 
   return (
     <div className="app-shell">
-      <Navbar />
+      <Navbar func = {setPage}/>
 
       <div className="app-layout">
         <Sidebar func={setPage}/>

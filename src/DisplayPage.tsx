@@ -5,6 +5,7 @@ import FarmersMarkets from "./Pages/FarmersMarkets";
 import Deals from "./Pages/Deals";
 import PreviousOrder from "./Pages/PreviousOrder";
 import Profile from "./Pages/Profile";
+import Cart from "./Pages/Cart";
 
 interface displayprop {
     name: string
@@ -28,6 +29,8 @@ function display (p: displayprop) {
             return <PreviousOrder />
         case "Profile":
             return <Profile />
+        case "Cart":
+            return <Cart />
         default:
             return <Home />
 
