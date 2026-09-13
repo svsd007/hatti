@@ -1,41 +1,33 @@
-import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const sidebarItems = [
-  "Home",
-  "Fresh Produce",
-  "Farmers",
-  "Farmers' Markets",
-  "Deals",
-  "Previous Orders",
-  "Profile",
+  { name: "Home", path: "/" },
+  { name: "Fresh Produce", path: "/fresh-produce" },
+  { name: "Farmers", path: "/farmers" },
+  { name: "Farmers' Markets", path: "/farmers-markets" },
+  { name: "Deals", path: "/deals" },
+  { name: "Previous Orders", path: "/previous-orders" },
+  { name: "Profile", path: "/profile" },
 ];
 
-interface Sideprop {
-  func: (s: string) => void;
-}
-
-function Sidebar(d: Sideprop) {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const thefunc = d.func;
-
+function Sidebar() {
   return (
     <aside className="hatti-sidebar">
       <nav className="sidebar-nav" aria-label="Main sections">
-        {sidebarItems.map((item, index) => (
-          <button
-            className={
-              index === selectedIndex ? "sidebar-link active" : "sidebar-link"
+        
+        {sidebarItems.map((item) => (
+          <NavLink
+            key={item.name}
+            to={item.path}
+            className={({ isActive }) =>
+              isActive ? "sidebar-link active" : "sidebar-link"
             }
-            key={item}
-            onClick={() => {
-              setSelectedIndex(index);
-              thefunc(item);
-            }}
           >
             <span className="sidebar-marker" aria-hidden="true" />
-            {item}
-          </button>
+            {item.name}
+          </NavLink>
         ))}
+
       </nav>
     </aside>
   );
