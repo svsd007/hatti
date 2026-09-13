@@ -2,8 +2,7 @@ interface navProp {
   func: (s: string) => void;
 }
 
-function Navbar(d: navProp) {
-  const thefunc = d.func;
+function Navbar() {
 
   
   return (
@@ -31,7 +30,7 @@ function Navbar(d: navProp) {
           className="btn hatti-cart-btn"
           type="button"
           aria-label="Open cart"
-          onClick={() => thefunc("Cart")}
+          onClick={() => console.log("Cart button clicked")}
         >
           🧺
         </button>
