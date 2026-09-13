@@ -3,8 +3,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import DisplayPage from "./DisplayPage";
-
-
+import {BrowserRouter, Routes, Route, Link} from "react-router-dom"
 
 
 function App() {
