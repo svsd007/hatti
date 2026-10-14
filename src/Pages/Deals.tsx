@@ -1,3 +1,6 @@
+import AddToCartButton from "../components/AddToCartButton";
+import { productFromDisplay } from "../cart/cart";
+
 const deals = [
   {
     name: "Berry Box Bundle",
@@ -55,9 +58,7 @@ function Deals() {
                 <div className="deal-footer">
                   <span className="old-price">{deal.oldPrice}</span>
                   <strong>{deal.newPrice}</strong>
-                  <button className="btn hatti-add-btn" type="button">
-                    Add
-                  </button>
+                  <AddToCartButton product={productFromDisplay(deal.name, deal.farmName, deal.newPrice, "deal")} />
                 </div>
               </article>
             </div>

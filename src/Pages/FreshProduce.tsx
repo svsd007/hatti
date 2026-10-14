@@ -1,4 +1,5 @@
 import ProductCard from "../components/ProductCard";
+import { Link, useSearchParams } from "react-router-dom";
 
 const produceItems = [
   {
@@ -54,6 +55,17 @@ const produceItems = [
 const categories = ["All", "Fruit", "Vegetables", "Greens", "Market Deals"];
 
 function FreshProduce() {
+  const [params, setParams] = useSearchParams();
+  const category = params.get("category") ?? "All";
+  const query = params.get("q")?.trim().toLowerCase() ?? "";
+  const fruit = new Set(["strawberry", "blueberry", "peach"]);
+  const filteredItems = produceItems.filter(item => {
+    const matchesCategory = category === "All" ||
+      (category === "Fruit" && fruit.has(item.accent)) ||
+      (category === "Greens" && item.accent === "kale") ||
+      (category === "Vegetables" && !fruit.has(item.accent));
+    return matchesCategory && `${item.name} ${item.farmName}`.toLowerCase().includes(query);
+  });
   return (
     <>
       <section className="page-intro">
@@ -67,19 +79,23 @@ function FreshProduce() {
 
       <section className="content-section">
         <div className="filter-row" aria-label="Produce categories">
-          {categories.map((category) => (
+          {categories.map((option) => option === "Market Deals" ? <Link className="filter-chip" key={option} to="/deals">{option}</Link> : (
             <button
-              className={category === "All" ? "filter-chip active" : "filter-chip"}
-              key={category}
+              className={category === option ? "filter-chip active" : "filter-chip"}
+              key={option}
               type="button"
+              aria-pressed={category === option}
+              onClick={() => { const next = new URLSearchParams(params); next.set("category", option); setParams(next); }}
             >
-              {category}
+              {option}
             </button>
           ))}
         </div>
 
+        <p className="result-count" role="status">{filteredItems.length} products{query ? ` matching “${params.get("q")}”` : " to explore"}</p>
+        {filteredItems.length === 0 && <div className="hatti-card cart-empty"><h2>No produce found.</h2><p>Try a different name, farm, or category.</p><button className="btn hatti-add-btn" onClick={() => setParams({})}>Clear filters</button></div>}
         <div className="row g-4">
-          {produceItems.map((item) => (
+          {filteredItems.map((item) => (
             <div className="col-12 col-sm-6 col-xl-3" key={item.name}>
               <ProductCard
                 name={item.name}

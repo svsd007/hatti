@@ -1,6 +1,9 @@
 import FarmerCard from "../components/FarmerCard";
 import MarketCard from "../components/MarketCard";
 import ProductCard from "../components/ProductCard";
+import { Link } from "react-router-dom";
+import ProduceArt from "../components/ProduceArt";
+import Icon from "../components/Icon";
 
 const products = [
   {
@@ -50,7 +53,6 @@ const farmers = [
   },
 ];
 
-const seasonalCategories = ["Blueberries", "Peaches", "Tomatoes", "Zucchini"];
 
 const markets = [
   {
@@ -65,31 +67,34 @@ const markets = [
   },
 ];
 
-function homepage() {
+function Home() {
   return (
     <>
+      <div className="home-welcome"><span>Your neighbourhood market</span><span><Icon name="pin" /> Vancouver & beyond</span></div>
       <section className="hero-section">
-        <div>
-          <p className="section-kicker">Local harvest, simple shopping</p>
-          <h1>Fresh food, closer to home.</h1>
-          <p className="hero-copy">
-            Shop produce from local farmers and markets around you.
-          </p>
-          <a href="#near-you" className="btn hatti-primary-btn">
-            Browse local produce
-          </a>
+        <div className="hero-content">
+          <p className="section-kicker"><Icon name="leaf" /> Good things grow close to home</p>
+          <h1>Fresh food,<br />closer to <em>home.</em></h1>
+          <p className="hero-copy">A basket full of local goodness. Discover the growers, the markets, and the food that bring us together.</p>
+          <Link to="/fresh-produce" className="btn hatti-primary-btn">Explore the harvest <Icon name="arrow" /></Link>
+          <p className="hero-footnote"><Icon name="sun" /> A little seasonal. A lot of local.</p>
         </div>
-        <div className="hero-basket" aria-hidden="true">
-          <span className="basket-icon">🥕</span>
-          <span className="basket-icon">🍓</span>
-          <span className="basket-icon">🥬</span>
+        <div className="harvest-art" aria-hidden="true">
+          <div className="harvest-circle" />
+          <div className="harvest-produce harvest-kale"><ProduceArt kind="kale" /></div>
+          <div className="harvest-produce harvest-carrot"><ProduceArt kind="carrot" /></div>
+          <div className="harvest-produce harvest-corn"><ProduceArt kind="corn" /></div>
+          <div className="harvest-produce harvest-tomato"><ProduceArt kind="tomato" /></div>
+          <div className="harvest-produce harvest-berry"><ProduceArt kind="strawberry" /></div>
+          <div className="harvest-basket"><span>hatti</span><Icon name="leaf" /></div>
+          <div className="harvest-stamp">From the earth.<br /><strong>For your table.</strong></div>
         </div>
       </section>
 
       <section id="near-you" className="content-section">
         <div className="section-heading">
           <h2>Fresh near you</h2>
-          <span>Picked for Vancouver homes</span>
+          <Link className="section-link" to="/fresh-produce">View all produce <Icon name="arrow" /></Link>
         </div>
         <div className="row g-4">
           {products.map((product) => (
@@ -108,7 +113,7 @@ function homepage() {
       <section className="content-section">
         <div className="section-heading">
           <h2>Local farmers</h2>
-          <span>Meet the people growing nearby</span>
+          <Link className="section-link" to="/farmers">Meet all growers <Icon name="arrow" /></Link>
         </div>
         <div className="row g-4">
           {farmers.map((farmer) => (
@@ -123,25 +128,11 @@ function homepage() {
         </div>
       </section>
 
-      {/* 
-          <section className="content-section">
-            <div className="section-heading">
-              <h2>In season right now</h2>
-              <span>Bright, ripe, and ready</span>
-            </div>
-            <div className="season-grid">
-              {seasonalCategories.map((category) => (
-                <button className="season-card" key={category}>
-                  {category}
-                </button>
-              ))}
-            </div>
-          </section> */}
 
       <section className="content-section">
         <div className="section-heading">
           <h2>Farmers' markets near you</h2>
-          <span>Weekend stops worth planning around</span>
+          <Link className="section-link" to="/farmers-markets">Explore markets <Icon name="arrow" /></Link>
         </div>
         <div className="row g-4">
           {markets.map((market) => (
@@ -159,4 +150,4 @@ function homepage() {
   );
 }
 
-export default homepage;
+export default Home;

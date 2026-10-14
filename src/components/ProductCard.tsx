@@ -1,3 +1,7 @@
+import AddToCartButton from "./AddToCartButton";
+import { productFromDisplay } from "../cart/cart";
+import ProduceArt from "./ProduceArt";
+
 interface ProductCardProps {
   name: string;
   farmName: string;
@@ -9,7 +13,7 @@ function ProductCard({ name, farmName, price, accent }: ProductCardProps) {
   return (
     <article className="hatti-card product-card h-100">
       <div className={`product-image ${accent}`} aria-hidden="true">
-        <span>{name.charAt(0)}</span>
+        <ProduceArt kind={accent} />
       </div>
       <div className="card-body-content">
         <div>
@@ -18,9 +22,7 @@ function ProductCard({ name, farmName, price, accent }: ProductCardProps) {
         </div>
         <div className="product-footer">
           <strong>{price}</strong>
-          <button className="btn hatti-add-btn" type="button">
-            Add
-          </button>
+          <AddToCartButton product={productFromDisplay(name, farmName, price)} />
         </div>
       </div>
     </article>
