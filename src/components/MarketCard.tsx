@@ -1,3 +1,5 @@
+import Icon from "./Icon";
+
 interface MarketCardProps {
   name: string;
   distance: string;
@@ -8,7 +10,7 @@ function MarketCard({ name, distance, schedule }: MarketCardProps) {
   return (
     <article className="hatti-card market-card h-100">
       <div className="market-icon" aria-hidden="true">
-        Market
+        <Icon name="market" />
       </div>
       <div>
         <h3>{name}</h3>

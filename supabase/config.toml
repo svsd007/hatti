@@ -1,0 +1,7 @@
+# Both handlers perform their own verification: getUser for checkout,
+# Stripe signature verification for the webhook. No anonymous checkout.
+[functions.create-checkout-session]
+verify_jwt = false
+
+[functions.stripe-webhook]
+verify_jwt = false

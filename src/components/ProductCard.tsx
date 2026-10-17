@@ -1,30 +1,25 @@
-interface ProductCardProps {
-  name: string;
-  farmName: string;
-  price: string;
-  accent: string;
-}
+import { Link } from "react-router-dom";
+import { money } from "../cart/cart";
+import { stockLabel, toCartProduct } from "../catalog/catalog";
+import type { CatalogProduct } from "../catalog/types";
+import ProductImage from "./ProductImage";
+import ProductQuantityControls from "./ProductQuantityControls";
 
-function ProductCard({ name, farmName, price, accent }: ProductCardProps) {
-  return (
-    <article className="hatti-card product-card h-100">
-      <div className={`product-image ${accent}`} aria-hidden="true">
-        <span>{name.charAt(0)}</span>
+export default function ProductCard({ product }: { product: CatalogProduct }) {
+  const priceValid = Number.isSafeInteger(product.price) && product.price >= 0;
+  return <article className="hatti-card product-card h-100">
+    <ProductImage name={product.name} path={product.image_path} />
+    <div className="card-body-content">
+      <div>
+        <h3><Link className="product-card-link" to={`/products/${product.id}`}>{product.name}</Link></h3>
+        <p>{product.farmName}</p>
+        {product.description && <p>{product.description}</p>}
+        <p>{stockLabel(product)}</p>
       </div>
-      <div className="card-body-content">
-        <div>
-          <h3>{name}</h3>
-          <p>{farmName}</p>
-        </div>
-        <div className="product-footer">
-          <strong>{price}</strong>
-          <button className="btn hatti-add-btn" type="button">
-            Add
-          </button>
-        </div>
+      <div className="product-footer">
+        <strong>{priceValid ? `${money(product.price)} / ${product.unit}` : "Price unavailable"}</strong>
+        <ProductQuantityControls product={toCartProduct(product)} />
       </div>
-    </article>
-  );
+    </div>
+  </article>;
 }
-
-export default ProductCard;

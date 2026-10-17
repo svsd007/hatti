@@ -1,36 +1,33 @@
 import { NavLink } from "react-router-dom";
+import Icon from "./Icon";
+import type { IconName } from "./Icon";
 
-const sidebarItems = [
-  { name: "Home", path: "/" },
-  { name: "Fresh Produce", path: "/fresh-produce" },
-  { name: "Farmers", path: "/farmers" },
-  { name: "Farmers' Markets", path: "/farmers-markets" },
-  { name: "Deals", path: "/deals" },
-  { name: "Previous Orders", path: "/previous-orders" },
-  { name: "Profile", path: "/profile" },
+const items: { name: string; path: string; icon: IconName }[] = [
+  { name: "Discover", path: "/", icon: "home" },
+  { name: "Fresh produce", path: "/fresh-produce", icon: "leaf" },
+  { name: "Our farmers", path: "/farmers", icon: "farm" },
+  { name: "Seasonal deals", path: "/deals", icon: "tag" },
+  { name: "Your basket", path: "/cart", icon: "basket" },
+  { name: "Previous orders", path: "/previous-orders", icon: "orders" },
+  { name: "Your profile", path: "/profile", icon: "user" },
+  { name: "Sell on Hatti", path: "/business", icon: "farm" },
 ];
 
-function Sidebar() {
-  return (
-    <aside className="hatti-sidebar">
-      <nav className="sidebar-nav" aria-label="Main sections">
-        
-        {sidebarItems.map((item) => (
-          <NavLink
-            key={item.name}
-            to={item.path}
-            className={({ isActive }) =>
-              isActive ? "sidebar-link active" : "sidebar-link"
-            }
-          >
-            <span className="sidebar-marker" aria-hidden="true" />
-            {item.name}
-          </NavLink>
-        ))}
-
-      </nav>
-    </aside>
-  );
+export default function Sidebar() {
+  return <aside className="hatti-sidebar">
+    <p className="sidebar-label">Explore your market</p>
+    <nav className="sidebar-nav" aria-label="Main sections">
+      {items.map((item) => <NavLink key={item.path} to={item.path} end={item.path === "/"}
+        className={({ isActive }) => `sidebar-link${isActive ? " active" : ""}${item.path === "/cart" ? " sidebar-account-start" : ""}`}>
+        <Icon name={item.icon} /><span>{item.name}</span>
+      </NavLink>)}
+    </nav>
+    <div className="sidebar-note">
+      <Icon name="leaf" />
+      <h2>Small farms.<br />Big difference.</h2>
+      <p>A little local love goes a long way.</p>
+      <NavLink to="/farmers">Meet the growers <Icon name="arrow" /></NavLink>
+    </div>
+    <p className="sidebar-footer">Rooted in community.</p>
+  </aside>;
 }
-
-export default Sidebar;
