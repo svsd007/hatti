@@ -5,11 +5,11 @@ import { googleSignInAvailable, supabase } from "../lib/supabase";
 import { useAuth } from "../auth/useAuth";
 import { authErrorMessage, safeDestination } from "../auth/authUtils";
 
-export default function AuthForm({ mode }: { mode: "login" | "signup" }) {
+export default function AuthForm({ mode, business = false }: { mode: "login" | "signup"; business?: boolean }) {
   const signup = mode === "signup";
   const { user, loading, error: sessionError } = useAuth();
   const [params] = useSearchParams();
-  const next = safeDestination(params.get("next"));
+  const next = safeDestination(params.get("next") ?? (business ? "/business" : null));
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmation, setConfirmation] = useState("");
@@ -72,9 +72,9 @@ export default function AuthForm({ mode }: { mode: "login" | "signup" }) {
   if (user) return <Navigate replace to={next} />;
   return (
     <section className="hatti-card auth-card" aria-labelledby="auth-heading">
-      <p className="section-kicker">Your Hatti account</p>
-      <h1 id="auth-heading">{signup ? "Grow with your community." : "Welcome back."}</h1>
-      <p>{signup ? "Create one account to shop local and, later, register your farm or business." : "Log in to manage your account and keep shopping local."}</p>
+      <p className="section-kicker">{business ? "Your Hatti business account" : "Your Hatti account"}</p>
+      <h1 id="auth-heading">{business ? signup ? "Bring your business to Hatti." : "Log in to your business." : signup ? "Grow with your community." : "Welcome back."}</h1>
+      <p>{business ? signup ? "Create your account, confirm your email, then register your business and publish products." : "Use your Hatti account to manage your business and product listings." : signup ? "Create an account to shop local or register your farm or business." : "Log in to manage your account and keep shopping local."}</p>
       {(error || sessionError) && <p className="auth-error" role="alert">{error || sessionError}</p>}
       {notice && <p className="auth-notice" role="status">{notice}</p>}
       <form onSubmit={submit} className="auth-form" aria-busy={busy}>
@@ -101,8 +101,10 @@ export default function AuthForm({ mode }: { mode: "login" | "signup" }) {
         </fieldset>
       </form>
       <p className="auth-switch">{signup ? "Already have an account? " : "New to Hatti? "}
-        <Link to={`/${signup ? "login" : "signup"}?next=${encodeURIComponent(next)}`}>{signup ? "Log in" : "Create an account"}</Link>
+        <Link to={`${business ? "/business" : ""}/${signup ? "login" : "signup"}?next=${encodeURIComponent(next)}`}>{signup ? "Log in" : "Create an account"}</Link>
       </p>
+      {!business && signup && <p><Link to="/business/signup">Signing up as a business?</Link></p>}
+      {!business && !signup && <p><Link to="/business/login">Business login</Link></p>}
     </section>
   );
 }

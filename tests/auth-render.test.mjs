@@ -44,6 +44,19 @@ test("auth screens render accessible fields, real profile values, and guarded ac
     assert.doesNotMatch(render(protectedContent), /Private account content/);
     assert.match(render(protectedContent, { ...guest, loading: true }), /Loading your account/);
     assert.match(render(protectedContent, { ...guest, error: "Connection unavailable" }), /Connection unavailable/);
+    const { CatalogContext } = await server.ssrLoadModule("/src/catalog/CatalogContext.ts");
+    const { default: ProductListingForm } = await server.ssrLoadModule("/src/business/ProductListingForm.tsx");
+    const product = { id: "product-id", business_id: "my-business", name: "Fresh apples", price: 599,
+      unit: "crate", stock_quantity: 0, is_available: false, description: "Short card text",
+      further_description: "Preserve these extended details", category: "Fruit", image_path: "owner/image.jpg" };
+    const editForm = render(h(CatalogContext.Provider, { value: { refresh() {} } },
+      h(ProductListingForm, { businessId: "my-business", product, onCancel() {} })), signedIn);
+    assert.match(editForm, /Save changes/);
+    assert.match(editForm, /value="5.99"/);
+    assert.match(editForm, /Preserve these extended details/);
+    assert.match(editForm, /value="crate" selected=""/);
+    assert.match(editForm, /Leave empty to keep the current image/);
+    assert.doesNotMatch(editForm, /checked=""/);
   } finally {
     await server.close();
   }

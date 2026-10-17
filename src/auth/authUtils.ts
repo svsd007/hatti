@@ -2,6 +2,8 @@ const destinations = new Set([
   "/", "/fresh-produce", "/farmers", "/farmers-markets", "/deals",
   "/profile", "/previous-orders", "/cart", "/checkout",
   "/seller", "/seller/register", "/seller/products",
+  "/business",
+  "/checkout/success", "/checkout/cancel",
 ]);
 
 export function safeDestination(value: string | null | undefined): string {

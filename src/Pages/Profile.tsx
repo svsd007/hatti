@@ -49,6 +49,8 @@ function Profile() {
             <h2>Your shopping</h2>
             <Link to="/cart">View your basket</Link>
             <Link to="/previous-orders">View order history</Link>
+            <h2>Your business</h2>
+            <Link to="/business">Register or manage your business</Link>
           </article>
         </div>
       </section> : <section className="hatti-card auth-card">

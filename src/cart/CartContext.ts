@@ -8,6 +8,7 @@ interface CartValue {
   add: (product: CartProduct) => void;
   setQuantity: (id: string, quantity: number) => void;
   remove: (id: string) => void;
+  decrement: (id: string) => void;
   clear: () => void;
 }
 
